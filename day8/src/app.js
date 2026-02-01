@@ -7,6 +7,9 @@ const app = express();
 //middleware
 app.use(express.json());
 
+
+//create notes
+
 app.post("/notes", async (req, res) => {
   const { title, description } = req.body;
 
@@ -18,15 +21,17 @@ app.post("/notes", async (req, res) => {
   });
 });
 
-
+//fetch notes
 app.get("/notes",async(req,res)=>{
-    const note = await noteModel.find()
+    const note = await noteModel.find() //always return arry of object
 
     res.status(200).json({
         message:"note fetched",
         note
     })
 })
+
+//delete notes
 
 app.delete("/notes/:id",async(req,res)=>{
     const {id} = req.params;
@@ -38,6 +43,20 @@ app.delete("/notes/:id",async(req,res)=>{
         message:"deleted",
         id
     })
+})
+
+//update notes
+
+app.patch("/notes/:id", async(req,res)=>{
+  const id = req.params.id
+  const{description} = req.body
+
+  await noteModel.findByIdAndUpdate(id,{description})
+
+  res.status(200).json({
+    message:"updated description"
+  })
+
 })
 
 module.exports = app;
