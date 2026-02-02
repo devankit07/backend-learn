@@ -1,0 +1,29 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html,
+body,#root {
+  height: 100%;
+  width: 100%;
+}
+
+body{
+  background-color: rgb(27, 61, 67);
+}
+
+.users{
+  display: flex;
+  gap: 10px;
+  padding-block: 1rem;
+  padding-inline: 3rem;
+}
+
+.user{
+  background-color: #202d37;
+  padding: 1rem;
+  border-radius: 0.7rem;
+  max-width: 20rem;
+  color: azure;
+}

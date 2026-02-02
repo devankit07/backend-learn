@@ -1,11 +1,13 @@
 const mongoose = require("express");
 require("dotenv").config();
 const noteModel = require("./models/notes.models");
+const cors = require("cors");
 
 const app = mongoose();
 
 //middleware
 app.use(mongoose.json());
+app.use(cors());
 
 app.post("/api/user", async (req, res) => {
   const { name, email, age } = req.body;
