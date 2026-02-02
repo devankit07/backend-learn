@@ -15,6 +15,14 @@ const App = () => {
       age: "25",
     },
     { name: "user 4", email: "sampalegmail.com", age: "25" },
+    { name: "user 4", email: "sampalegmail.com", age: "25" },
+    { name: "user 4", email: "sampalegmail.com", age: "25" },
+    { name: "user 4", email: "sampalegmail.com", age: "25" },
+    { name: "user 4", email: "sampalegmail.com", age: "25" },
+    { name: "user 4", email: "sampalegmail.com", age: "25" },
+    { name: "user 4", email: "sampalegmail.com", age: "25" },
+    { name: "user 4", email: "sampalegmail.com", age: "25" },
+
   ]);
 
   axios.get("http://localhost:8080/api/user").then((res)=>{
