@@ -25,7 +25,7 @@ app.get("/api/user", async (req, res) => {
   const note = await noteModel.find(); //always return arry of object
 
   res.status(200).json({
-    message: "note fetched",
+    message: "users fetched",
     note,
   });
 });
