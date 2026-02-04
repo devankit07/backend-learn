@@ -85,18 +85,6 @@ const App = () => {
             {editId === val._id ? (
               <div className="edit-view">
                 <input
-                  value={editFormData.name}
-                  onChange={(e) =>
-                    setEditFormData({ ...editFormData, name: e.target.value })
-                  }
-                />
-                <input
-                  value={editFormData.email}
-                  onChange={(e) =>
-                    setEditFormData({ ...editFormData, email: e.target.value })
-                  }
-                />
-                <input
                   value={editFormData.age}
                   onChange={(e) =>
                     setEditFormData({ ...editFormData, age: e.target.value })
