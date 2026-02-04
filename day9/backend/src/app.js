@@ -12,14 +12,26 @@ app.use(cors());
 app.use(express.static("./public"));
 
 app.post("/api/user", async (req, res) => {
-  const { name, email, age } = req.body;
+  try {
+    const { name, email, age } = req.body;
 
-  const note = await noteModel.create({ name, email, age });
+    if (!name || !email || !age) {
+      return res.status(400).json({ message: "All fields are required" });
+    }
 
-  res.status(201).json({
-    message: "user created",
-    note,
-  });
+    const note = await noteModel.create({ name, email, age });
+
+    res.status(201).json({
+      message: "user created",
+      note,
+    });
+  } catch (error) {
+    console.error("Database Error:", error);
+    res.status(500).json({
+      message: "Server Error",
+      error: error.message,
+    });
+  }
 });
 
 //fetch notes

@@ -11,9 +11,11 @@ const App = () => {
   });
 
   function fetchnotes() {
-    axios.get("https://student-portal-nsv4.onrender.com/api/user").then((res) => {
-      setUser(res.data.note || []);
-    });
+    axios
+      .get("https://student-portal-nsv4.onrender.com/api/user")
+      .then((res) => {
+        setUser(res.data.note);
+      });
   }
 
   useEffect(() => {
@@ -38,9 +40,11 @@ const App = () => {
 
   // API: DELETE
   function handledelete(noteId) {
-    axios.delete("https://student-portal-nsv4.onrender.com/api/user/" + noteId).then(() => {
-      fetchnotes();
-    });
+    axios
+      .delete("https://student-portal-nsv4.onrender.com/api/user/" + noteId)
+      .then(() => {
+        fetchnotes();
+      });
   }
 
   // UI: TOGGLE EDIT MODE
@@ -51,10 +55,15 @@ const App = () => {
 
   // API: UPDATE
   function handleUpdateSubmit(id) {
-    axios.put("https://student-portal-nsv4.onrender.com/api/user/" + id, editFormData).then(() => {
-      setEditId(null);
-      fetchnotes();
-    });
+    axios
+      .put(
+        "https://student-portal-nsv4.onrender.com/api/user/" + id,
+        editFormData,
+      )
+      .then(() => {
+        setEditId(null);
+        fetchnotes();
+      });
   }
 
   return (
