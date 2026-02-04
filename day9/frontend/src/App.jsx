@@ -131,7 +131,7 @@ const App = () => {
                     Delete
                   </button>
                   <button className="upd-btn" onClick={() => startEdit(val)}>
-                    Update
+                    Update Age
                   </button>
                 </div>
               </div>
