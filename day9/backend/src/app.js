@@ -2,6 +2,7 @@ const express = require("express");
 require("dotenv").config();
 const noteModel = require("./models/notes.models");
 const cors = require("cors");
+const path = require("path");
 
 const app = express();
 
@@ -57,11 +58,11 @@ app.patch("/api/user/:id", async (req, res) => {
   });
 });
 
+console.log(__dirname);
+
 //wild card route
-app.use("*",(req, res) => {
-  res.status(404).json({
-    message: "route not found",
-  });
+app.use("*name", (req, res) => {
+  res.sendFile(path.join(__dirname, "..", "./public/index.html"));
 });
 
 module.exports = app;
