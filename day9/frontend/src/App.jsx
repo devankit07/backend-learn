@@ -11,7 +11,7 @@ const App = () => {
   });
 
   function fetchnotes() {
-    axios.get("http://localhost:8000/api/user").then((res) => {
+    axios.get("https://student-portal-nsv4.onrender.com/api/user").then((res) => {
       setUser(res.data.note || []);
     });
   }
@@ -25,7 +25,7 @@ const App = () => {
     e.preventDefault();
     const { name, email, age } = e.target.elements;
     axios
-      .post("http://localhost:8000/api/user", {
+      .post("https://student-portal-nsv4.onrender.com/api/user", {
         name: name.value,
         email: email.value,
         age: age.value,
@@ -38,7 +38,7 @@ const App = () => {
 
   // API: DELETE
   function handledelete(noteId) {
-    axios.delete("http://localhost:8000/api/user/" + noteId).then(() => {
+    axios.delete("https://student-portal-nsv4.onrender.com/api/user/" + noteId).then(() => {
       fetchnotes();
     });
   }
@@ -51,7 +51,7 @@ const App = () => {
 
   // API: UPDATE
   function handleUpdateSubmit(id) {
-    axios.put("http://localhost:8000/api/user/" + id, editFormData).then(() => {
+    axios.put("https://student-portal-nsv4.onrender.com/api/user/" + id, editFormData).then(() => {
       setEditId(null);
       fetchnotes();
     });
