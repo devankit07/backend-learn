@@ -59,17 +59,23 @@ app.delete("/api/user/:id", async (req, res) => {
 
 //update notes
 
+/**
+ * PATCH /api/user/:id
+ * Sirf Age update karne ke liye
+ */
 app.patch("/api/user/:id", async (req, res) => {
-  const id = req.params.id;
-  const { age } = req.body;
+  try {
+    const id = req.params.id;
+    const { age } = req.body;
+    await noteModel.findByIdAndUpdate(id, { age });
 
-  await noteModel.findByIdAndUpdate(id, { age });
-
-  res.status(200).json({
-    message: "updated age",
-  });
+    res.status(200).json({
+      message: "Age updated successfully",
+    });
+  } catch (error) {
+    res.status(500).json({ message: "Update failed", error: error.message });
+  }
 });
-
 console.log(__dirname);
 
 //wild card route

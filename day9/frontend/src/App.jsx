@@ -54,16 +54,17 @@ const App = () => {
   }
 
   // API: UPDATE
+  // API: UPDATE (Using PATCH for Age only)
   function handleUpdateSubmit(id) {
     axios
-      .put(
-        "https://student-portal-nsv4.onrender.com/api/user/" + id,
-        editFormData,
-      )
+      .patch("https://student-portal-nsv4.onrender.com/api/user/" + id, {
+        age: editFormData.age,
+      })
       .then(() => {
         setEditId(null);
         fetchnotes();
-      });
+      })
+      .catch((err) => console.log("Update error:", err));
   }
 
   return (
